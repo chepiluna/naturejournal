@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nature Memory Journal</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ✅ TAMBAHAN LEAFLET -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">NatureJournal</div>
+
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#beach">Beach</a></li>
+<li><a href="#mountain">Mountain</a></li>
+<li><a href="#timeline">Timeline</a></li>
+<li><a href="#map">Map Journey</a></li> <!-- ✅ TAMBAHAN -->
+</ul>
+
+<button class="hamburger" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>Nature Memory Journal</h1>
+
+<p>A collection of places, sounds, and moments.</p>
+<p class="hero-credit">By Chepi Luna</p>
+
+<button class="btn-play" onclick="document.getElementById('beach').scrollIntoView({behavior:'smooth'})">
+Explore Memories
+</button>
+
+</div>
+
+</section>
+
+<section class="section" id="beach">
+
+<h2><i class="fa-solid fa-water"></i> Beach Memories</h2>
+
+<!-- MEMORY GROUP 1 -->
+
+<div class="memory-group">
+
+<div class="memory-info">
+<h3>Parangtritis Sunset</h3>
+<p class="meta">
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+Parangtritis Beach
+</span>
+
+<span>•</span>
+
+<span>
+<i class="fa-regular fa-calendar"></i>
+14 Aug 2024
+</span>
+
+<span>•</span>
+
+<span class="music-control" onclick="playMemoryMusic('song1', this)">
+<i class="fa-solid fa-play"></i>
+About You - The 1975
+</span>
+
+</p>
+
+<audio id="song1">
+<source src="song/AboutYou.mp3" type="audio/mp3">
+</audio>
+</div>
+
+<div class="row">
+
+<div class="card">
+<img src="img/beach1.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach2.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach3.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach4.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach5.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach6.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach7.jfif">
+</div>
+
+<div class="card">
+<video controls>
+<source src="vid/beachvid.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MEMORY GROUP 2 -->
+
+<div class="memory-group">
+
+<div class="memory-info">
+<h3> Another Sunset at Menganti Beach</h3>
+<p class="meta">
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+Menganti Beach
+</span>
+
+<span>•</span>
+
+<span>
+<i class="fa-regular fa-calendar"></i>
+1 dess 2025
+</span>
+
+<span>•</span>
+
+<span class="music-control" onclick="playMemoryMusic('song2', this)">
+<i class="fa-solid fa-play"></i>
+I Wanna Be Yours - Arctic Monkey
+</span>
+
+</p>
+
+<audio id="song2">
+<source src="song/wannabeyours.mp3" type="audio/mp3">
+</audio>
+</div>
+
+<div class="row">
+
+<div class="card"><img src="img/beach8.jfif"></div>
+<div class="card"><img src="img/beach9.jfif"></div>
+<div class="card"><img src="img/beach10.jfif"></div>
+<div class="card"><img src="img/beach11.jfif"></div>
+<div class="card"><img src="img/beach12.jfif"></div>
+<div class="card"><img src="img/beach6.jfif"></div>
+<div class="card"><img src="img/beach7.jfif"></div>
+
+<div class="card">
+<video controls>
+<source src="vid/beachvid.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MOUNTAIN -->
+
+<section class="section" id="mountain">
+
+<h2><i class="fa-solid fa-mountain-sun"></i> Montain Memories</h2>
+
+</section>
+
+
+
+<!-- TIMELINE -->
+
+<section class="section" id="timeline">
+
+<h2>📅 Memory Timeline</h2>
+
+<!-- YEAR 2026 -->
+<div class="year-group">
+
+  <h3 onclick="toggleYear(this)">2026 ▼</h3>
+
+  <div class="timeline">
+
+    <div class="timeline-item left" onclick="focusMap(-8.0246,110.3290)">
+      <div class="content">
+        <h4>Jan 2026</h4>
+        <p>Watching sunset at Parangtritis.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item right" onclick="focusMap(-7.9425,112.9530)">
+      <div class="content">
+        <h4>Feb 2026</h4>
+        <p>Morning hike above the clouds.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item left" onclick="focusMap(-7.1662,107.4020)">
+      <div class="content">
+        <h4>Mar 2026</h4>
+        <p>Quiet forest exploration.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 🌍 MAP JOURNEY (TAMBAHAN) -->
+<section class="section" id="map">
+
+<h2><i class="fa-solid fa-map-location-dot"></i> Map Journey</h2>
+
+<div id="mapContainer"></div>
+
+</section>
+
+
+
+<!-- FULLSCREEN VIEWER -->
+
+<div class="viewer" id="viewer">
+
+<span class="close" onclick="closeViewer()">×</span>
+
+<img id="viewerImg">
+
+</div>
+
+
+<!-- ✅ LEAFLET JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+// ===== MAP INIT (SAFE GLOBAL) =====
+window.map = L.map('mapContainer').setView([-2.5, 118], 5);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+// ===== DATA LOKASI =====
+var memories = [
+    {
+        name: "Parangtritis Beach",
+        coords: [-8.0246, 110.3290],
+        date: "14 Aug 2024"
+    },
+    {
+        name: "Menganti Beach",
+        coords: [-7.7692, 109.4130],
+        date: "1 Dec 2025"
+    },
+    {
+        name: "Kawah Putih",
+        coords: [-7.1662, 107.4020],
+        date: "14 Aug 2024"
+    }
+];
+
+// ===== LOOP PIN =====
+memories.forEach(function(place) {
+    L.marker(place.coords)
+        .addTo(map)
+        .bindPopup(`<b>${place.name}</b><br>${place.date}`);
+});
+
+
+// ===== SAFE FUNCTIONS (ANTI ERROR) =====
+
+// COLLAPSIBLE YEAR
+function toggleYear(el) {
+  if (!el) return;
+
+  const timeline = el.nextElementSibling;
+  if (timeline) {
+    timeline.classList.toggle("hidden");
+  }
+}
+
+// CLICK TIMELINE → MAP
+function focusMap(lat, lng) {
+  try {
+    if (window.map && typeof map.setView === "function") {
+      map.setView([lat, lng], 10);
+    }
+
+    const mapSection = document.getElementById("map");
+    if (mapSection) {
+      mapSection.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+  } catch (err) {
+    console.log("Map not ready yet:", err);
+  }
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+
+background:linear-gradient(
+180deg,
+#0b2a4a 0%,
+#071a2c 40%,
+#02060d 100%
+);
+
+scrollbar-width:none;
+}
+
+body::-webkit-scrollbar{
+display:none;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+padding:15px 40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(10,25,45,.75);
+backdrop-filter:blur(6px);
+
+z-index:100;
+}
+
+.logo{
+font-weight:700;
+font-size:22px;
+
+background: linear-gradient(90deg,#9ad8ff,#4da6ff,#1f5fa8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+.nav-links a{
+position:relative;
+text-decoration:none;
+color:white;
+opacity:.8;
+padding-bottom:5px;
+transition:.3s;
+}
+
+.nav-links a:hover{
+opacity:1;
+}
+
+.nav-links a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:#7ecbff;
+transition:.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+width:100%;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+height:100vh;
+background:url("hero.jpeg") center/cover no-repeat;
+
+display:flex;
+align-items:center;
+
+padding:60px;
+position:relative;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+
+background:linear-gradient(
+to right,
+rgba(5,20,40,.85),
+rgba(5,20,40,.3)
+);
+}
+
+.hero-content{
+position:relative;
+max-width:500px;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:.8;
+margin-bottom:20px;
+}
+
+.hero-credit{
+font-size:14px;
+color:rgba(255,255,255,0.6);
+margin-top:-10px;
+margin-bottom:25px;
+letter-spacing:0.5px;
+}
+
+.btn-play{
+background:#e50914;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+color:white;
+cursor:pointer;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+padding:80px 40px;
+margin-bottom:40px;
+}
+
+.section h2{
+margin-bottom:20px;
+}
+
+.section h2 i{
+margin-right:10px;
+color:#7ecbff;
+}
+
+/* ================= SLIDER ================= */
+
+.slider{
+position:relative;
+overflow:hidden;
+}
+
+.slider::before,
+.slider::after{
+content:"";
+position:absolute;
+top:0;
+width:40px;
+height:100%;
+pointer-events:none;
+z-index:5;
+}
+
+.slider::before{
+left:0;
+background:linear-gradient(to right,#071a2c,transparent);
+}
+
+.slider::after{
+right:0;
+background:linear-gradient(to left,#071a2c,transparent);
+}
+
+.arrow{
+position:absolute;
+top:40%;
+background:rgba(0,0,0,.6);
+border:none;
+color:white;
+padding:10px;
+cursor:pointer;
+font-size:20px;
+z-index:5;
+}
+
+.left{left:-10px;}
+.right{right:-10px;}
+
+/* ================= MEMORY ================= */
+
+.memory-group{
+background:linear-gradient(
+135deg,
+rgba(20,80,140,.25),
+rgba(0,0,0,.2)
+);
+
+padding:20px;
+border-radius:15px;
+}
+
+.memory-info{
+margin-bottom:15px;
+}
+
+.memory-info h3{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.meta{
+font-size:14px;
+opacity:.7;
+
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.music-control{
+cursor:pointer;
+color:#7ecbff;
+transition:.3s;
+}
+
+.music-control:hover{
+color:white;
+}
+
+/* ================= HORIZONTAL SCROLL ================= */
+
+.row{
+display:flex;
+gap:18px;
+
+overflow-x:auto;
+scroll-behavior:smooth;
+
+padding:10px 5px 20px 5px;
+
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+
+align-items:flex-start;
+flex-wrap:nowrap;
+
+scrollbar-width:none;
+}
+
+.row::-webkit-scrollbar{
+display:none;
+}
+
+/* ================= CARD ================= */
+
+.card{
+min-width:220px;
+height:300px;
+
+scroll-snap-align:start;
+
+border:1px solid rgba(20,82,216,.6);
+border-radius:12px;
+
+transition:.3s;
+
+overflow:hidden;
+cursor:pointer;
+}
+
+.card img,
+.card video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(20,82,216,.5);
+}
+
+/* ===== TIMELINE UPGRADE ===== */
+
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 0;
+  width: 90%;
+}
+
+/* garis tengah */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(#7ecbff, transparent);
+  transform: translateX(-50%);
+}
+
+/* item */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 30px;
+  cursor: pointer; /* 🔥 clickable */
+}
+
+/* kiri */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+/* kanan */
+.timeline-item.right {
+  left: 50%;
+}
+
+/* titik */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  width: 15px;
+  height: 15px;
+  background: #7ecbff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #7ecbff;
+}
+
+/* posisi titik */
+.timeline-item.left::before {
+  right: -8px;
+}
+
+.timeline-item.right::before {
+  left: -8px;
+}
+
+/* card */
+.timeline-item .content {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+/* hover */
+.timeline-item:hover .content {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== COLLAPSIBLE YEAR ===== */
+
+.year-group h3 {
+  cursor: pointer;
+  color: #7ecbff;
+  margin-bottom: 10px;
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.year-group h3:hover {
+  color: white;
+}
+
+/* hidden state */
+.timeline.hidden {
+  display: none;
+}
+
+
+/* ===== MAP JOURNEY ===== */
+
+#map {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#map h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+/* Container Map */
+#mapContainer {
+  height: 500px;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+
+  /* aesthetic effect */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  filter: saturate(0.9) contrast(1.05);
+  transition: 0.3s;
+}
+
+/* hover halus */
+#mapContainer:hover {
+  transform: scale(1.01);
+}
+
+/* fullscreen (optional) */
+#mapContainer.fullscreen {
+  height: 100vh;
+  border-radius: 0;
+}
+
+
+/* ===== MOBILE FIX ===== */
+
+@media (max-width: 768px) {
+
+  /* garis pindah ke kiri */
+  .timeline::before {
+    left: 10px;
+  }
+
+  /* item full width */
+  .timeline-item {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 10px;
+    text-align: left;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+
+  /* titik pindah */
+  .timeline-item::before {
+    left: 0;
+  }
+
+  /* year title */
+  .year-group h3 {
+    font-size: 18px;
+  }
+
+  /* map lebih kecil */
+  #mapContainer {
+    height: 300px;
+    border-radius: 15px;
+  }
+
+  #map {
+    padding: 40px 10px;
+  }
+
+  #map h2 {
+    font-size: 22px;
+  }
+
+}
+
+/* ================= VIEWER ================= */
+
+.viewer{
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,.95);
+
+display:none;
+justify-content:center;
+align-items:center;
+
+z-index:300;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+cursor:pointer;
+}
+
+/* ================= HAMBURGER ================= */
+
+.hamburger{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:22px;
+cursor:pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+/* ===== GENERAL ===== */
+
+.section{
+padding:70px 16px;
+}
+
+.hero{
+padding:40px 20px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+/* ===== CARD ===== */
+
+.card{
+min-width:65vw;
+height:300px;
+}
+
+.row{
+gap:14px;
+}
+
+.memory-group{
+padding:16px;
+}
+
+.meta{
+flex-wrap:wrap;
+gap:6px;
+font-size:13px;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+padding:14px 18px;
+}
+
+.logo{
+font-size:18px;
+}
+
+/* ===== MOBILE MENU ===== */
+
+.nav-links{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+
+flex-direction:column;
+background:#071a2c;
+
+padding:20px;
+
+transform:translateY(-200%);
+transition:.4s;
+}
+
+.nav-links.show{
+transform:translateY(0);
+}
+
+.hamburger{
+display:block;
+}
+
+}
