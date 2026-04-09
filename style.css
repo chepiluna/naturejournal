@@ -146,6 +146,23 @@ color:white;
 cursor:pointer;
 }
 
+/* ===== HERO ANIMATION ===== */
+.hero h1,
+.hero p,
+.btn-play {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero p {
+  animation-delay: 0.3s;
+}
+
+.btn-play {
+  animation-delay: 0.6s;
+}
+
 /* ================= SECTION ================= */
 
 .section{
@@ -299,6 +316,35 @@ transform:translateY(-5px);
 box-shadow:0 10px 20px rgba(20,82,216,.5);
 }
 
+.card {
+  position: relative;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
 /* ===== TIMELINE UPGRADE ===== */
 
 .timeline {
@@ -324,7 +370,7 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
   position: relative;
   width: 50%;
   padding: 20px 30px;
-  cursor: pointer; /* 🔥 clickable */
+  cursor: pointer;
 }
 
 /* kiri */
@@ -366,6 +412,21 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
   border-radius: 10px;
   backdrop-filter: blur(5px);
   transition: 0.3s;
+
+  width: 260px; /* 🔥 FIX BIAR RATA */
+  text-align: left;
+}
+
+.timeline-item.left {
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.timeline-item.right {
+  left: 50%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 /* hover */
@@ -373,6 +434,18 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
+
+.timeline-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ===== COLLAPSIBLE YEAR ===== */
 
@@ -406,7 +479,7 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
   font-size: 28px;
 }
 
-/* Container Map */
+/* ===== MAP CONTAINER ===== */
 #mapContainer {
   height: 500px;
   width: 100%;
@@ -414,38 +487,50 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
   margin-top: 20px;
   overflow: hidden;
 
-  /* aesthetic effect */
+  /* aesthetic */
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   filter: saturate(0.9) contrast(1.05);
-  transition: 0.3s;
+
+  /* animation base */
+  opacity: 0;
+  transform: scale(0.95);
+
+  transition: 0.8s ease;
 }
 
-/* hover halus */
+/* ===== SHOW (SCROLL ANIMATION) ===== */
+#mapContainer.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===== HOVER EFFECT ===== */
 #mapContainer:hover {
   transform: scale(1.01);
 }
 
-/* fullscreen (optional) */
+/* ===== FULLSCREEN (OPTIONAL) ===== */
 #mapContainer.fullscreen {
   height: 100vh;
   border-radius: 0;
 }
 
-
 /* ===== MOBILE FIX ===== */
 
 @media (max-width: 768px) {
 
-  /* garis pindah ke kiri */
+  /* ===== TIMELINE ===== */
+
+  /* garis */
   .timeline::before {
-    left: 10px;
+    left: 20px;
   }
 
-  /* item full width */
+  /* item */
   .timeline-item {
     width: 100%;
-    padding-left: 30px;
-    padding-right: 10px;
+    padding-left: 55px; /* jarak dari garis */
+    padding-right: 15px;
     text-align: left;
   }
 
@@ -454,17 +539,31 @@ box-shadow:0 10px 20px rgba(20,82,216,.5);
     left: 0;
   }
 
-  /* titik pindah */
+  /* titik */
   .timeline-item::before {
-    left: 0;
+    left: 18px;
   }
 
-  /* year title */
+  .timeline-item.left::before,
+  .timeline-item.right::before {
+    left: 18px;
+    right: auto;
+  }
+
+  /* card */
+  .timeline-item .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ===== YEAR TITLE ===== */
+
   .year-group h3 {
     font-size: 18px;
   }
 
-  /* map lebih kecil */
+  /* ===== MAP ===== */
+
   #mapContainer {
     height: 300px;
     border-radius: 15px;
@@ -508,6 +607,18 @@ font-size:40px;
 cursor:pointer;
 }
 
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ================= HAMBURGER ================= */
 
 .hamburger{
@@ -526,7 +637,7 @@ cursor:pointer;
 /* ===== GENERAL ===== */
 
 .section{
-padding:70px 16px;
+padding:70px 0;
 }
 
 .hero{
@@ -592,5 +703,12 @@ transform:translateY(0);
 .hamburger{
 display:block;
 }
+}
 
+/* ===== GLOBAL ANIMATION ===== */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

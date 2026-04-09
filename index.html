@@ -63,13 +63,13 @@ Explore Memories
 
 </section>
 
-<section class="section" id="beach">
+<section class="section reveal" id="beach">
 
 <h2><i class="fa-solid fa-water"></i> Beach Memories</h2>
 
 <!-- MEMORY GROUP 1 -->
 
-<div class="memory-group">
+<div class="memory-group reveal">
 
 <div class="memory-info">
 <h3>Parangtritis Sunset</h3>
@@ -144,7 +144,7 @@ About You - The 1975
 
 <!-- MEMORY GROUP 2 -->
 
-<div class="memory-group">
+<div class="memory-group reveal">
 
 <div class="memory-info">
 <h3> Another Sunset at Menganti Beach</h3>
@@ -159,7 +159,7 @@ Menganti Beach
 
 <span>
 <i class="fa-regular fa-calendar"></i>
-1 dess 2025
+1 dec 2025
 </span>
 
 <span>•</span>
@@ -200,19 +200,89 @@ I Wanna Be Yours - Arctic Monkey
 
 <!-- MOUNTAIN -->
 
-<section class="section" id="mountain">
+<section class="section reveal" id="mountain">
 
-<h2><i class="fa-solid fa-mountain-sun"></i> Montain Memories</h2>
+<h2><i class="fa-solid fa-mountain-sun"></i> Mountain Memories</h2>
+
+<div class="memory-group reveal">
+
+<div class="memory-info">
+<h3>Parangtritis Sunset</h3>
+<p class="meta">
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+Parangtritis Beach
+</span>
+
+<span>•</span>
+
+<span>
+<i class="fa-regular fa-calendar"></i>
+14 Aug 2024
+</span>
+
+<span>•</span>
+
+<span class="music-control" onclick="playMemoryMusic('song1', this)">
+<i class="fa-solid fa-play"></i>
+About You - The 1975
+</span>
+
+</p>
+
+<audio id="song1">
+<source src="song/AboutYou.mp3" type="audio/mp3">
+</audio>
+</div>
+
+<div class="row">
+
+<div class="card">
+<img src="img/beach1.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach2.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach3.jpeg">
+</div>
+
+<div class="card">
+<img src="img/beach4.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach5.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach6.jfif">
+</div>
+
+<div class="card">
+<img src="img/beach7.jfif">
+</div>
+
+<div class="card">
+<video controls>
+<source src="vid/beachvid.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-
-
 <!-- TIMELINE -->
 
-<section class="section" id="timeline">
+<section class="section reveal" id="timeline">
 
-<h2>📅 Memory Timeline</h2>
+<h2><i class="fa-solid fa-calendar"></i> Memory Timeline</h2>
 
 <!-- YEAR 2026 -->
 <div class="year-group">
@@ -250,7 +320,7 @@ I Wanna Be Yours - Arctic Monkey
 
 
 <!-- 🌍 MAP JOURNEY (TAMBAHAN) -->
-<section class="section" id="map">
+<section class="section reveal" id="map">
 
 <h2><i class="fa-solid fa-map-location-dot"></i> Map Journey</h2>
 
@@ -339,6 +409,40 @@ function focusMap(lat, lng) {
     console.log("Map not ready yet:", err);
   }
 }
+</script>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const timelineItems = document.querySelectorAll('.timeline-item');
+const mapBox = document.getElementById('mapContainer');
+
+window.addEventListener('scroll', () => {
+
+  // REVEAL SECTION
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+
+  // TIMELINE
+  timelineItems.forEach(item => {
+    const top = item.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      item.classList.add('show');
+    }
+  });
+
+  // MAP ANIMATION
+  if (mapBox) {
+    const top = mapBox.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      mapBox.classList.add('show');
+    }
+  }
+
+});
 </script>
 
 <script src="script.js"></script>
