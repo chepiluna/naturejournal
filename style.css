@@ -94,7 +94,7 @@ width:100%;
 
 .hero{
 height:100vh;
-background:url("hero.jfif") center/cover no-repeat;
+background:url("hero.jpg") center/cover no-repeat;
 
 display:flex;
 align-items:center;
